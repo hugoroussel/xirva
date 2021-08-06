@@ -1,0 +1,18 @@
+{
+  "name": "xirva-next",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "file-saver": "^2.0.5",
+    "fs": "^0.0.1-security",
+    "next": "11.0.1",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "web3.storage": "^3.1.0"
+  }
+}
