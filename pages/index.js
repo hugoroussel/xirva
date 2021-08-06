@@ -5,9 +5,9 @@ import { saveAs } from 'file-saver';
 
 export default function Home() {
 
-
+  // be careful to not push tokens on the VCS! Old one was revoked
   function getAccessToken() {
-    return 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDBGNEI5OWE0QTdiZTBBNzA3OEE0OGRDNjQwZEZjMjY3QzI2MDAxRjAiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2Mjc5NjgyNTU5ODAsIm5hbWUiOiJ4aXJ2YSJ9.agjYvg1UGAyn8CIf4YKQs7vT8cGG9Wt9y6rdYp5S6rc'
+    return ''
   }
 
   function makeStorageClient() {
