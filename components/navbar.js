@@ -1,8 +1,8 @@
 /*
-  This example requires Tailwind CSS v2.0+ 
-  
+  This example requires Tailwind CSS v2.0+
+
   This example requires some changes to your config:
-  
+
   ```
   // tailwind.config.js
   module.exports = {
@@ -14,13 +14,13 @@
   }
   ```
 */
-import { Fragment } from 'react'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { SearchIcon } from '@heroicons/react/solid'
-import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
+import { Fragment } from 'react';
+import { Disclosure, Menu, Transition } from '@headlessui/react';
+import { SearchIcon } from '@heroicons/react/solid';
+import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline';
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(' ');
 }
 
 export default function Navbar() {
@@ -84,7 +84,6 @@ export default function Navbar() {
               </div>
               <div className="hidden lg:ml-4 lg:flex lg:items-center">
 
-
                 {/* Profile dropdown */}
                 <Menu as="div" className="ml-4 relative flex-shrink-0">
                   {({ open }) => (
@@ -107,9 +106,7 @@ export default function Navbar() {
                         <Menu.Items
                           static
                           className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
-                        >
-                          
-                        </Menu.Items>
+                        />
                       </Transition>
                     </>
                   )}
@@ -127,12 +124,12 @@ export default function Navbar() {
               >
                 Upload
               </a>
-             
+
             </div>
 
           </Disclosure.Panel>
         </>
       )}
     </Disclosure>
-  )
+  );
 }
