@@ -130,9 +130,9 @@ const Post = () => {
           </div>
         </div>
         <br />
-        <div className="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
+        <div className="bg-white px-4 py-3 flex items-center justify-between border-gray-200 sm:px-6">
 
-          <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+          <div className="sm:flex-1 sm:flex sm:items-center sm:justify-between">
             <div>
               <nav className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
 
@@ -140,7 +140,7 @@ const Post = () => {
                   <a
                     href="#"
                     aria-current="page"
-                    className="z-10 bg-indigo-50 border-indigo-500 text-indigo-600 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
+                    className="z-10 bg-indigo-50 border-indigo-500 text-indigo-600 hover:bg-indigo-100 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
                   >
                     {person.year}
                   </a>
@@ -153,7 +153,7 @@ const Post = () => {
                   <a
                     href="#"
                     aria-current="page"
-                    className="z-10 bg-indigo-50 border-indigo-500 text-indigo-600 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
+                    className="z-10 bg-indigo-50 border-indigo-500 text-indigo-600 hover:bg-indigo-100 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
                   >
                     {person.year}
                   </a>
@@ -166,7 +166,7 @@ const Post = () => {
                   <a
                     href="#"
                     aria-current="page"
-                    className="z-10 bg-indigo-50 border-indigo-500 text-indigo-600 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
+                    className="z-10 bg-indigo-50 border-indigo-500 text-indigo-600 hover:bg-indigo-100 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
                   >
                     {person.year}
                   </a>
