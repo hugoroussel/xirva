@@ -138,7 +138,7 @@ const Post = () => {
 
                 {years0to9.map((person) => (
                   <a
-                    href="#"
+                    href={`/list/${code}/${person.year}`}
                     aria-current="page"
                     className="z-10 bg-indigo-50 border-indigo-500 text-indigo-600 hover:bg-indigo-100 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
                   >
@@ -151,7 +151,7 @@ const Post = () => {
               <nav className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
                 {years10to20.map((person) => (
                   <a
-                    href="#"
+                    href={`/list/${code}/${person.year}`}
                     aria-current="page"
                     className="z-10 bg-indigo-50 border-indigo-500 text-indigo-600 hover:bg-indigo-100 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
                   >
@@ -164,7 +164,7 @@ const Post = () => {
               <nav className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
                 {years20to21.map((person) => (
                   <a
-                    href="#"
+                    href={`/list/${code}/${person.year}`}
                     aria-current="page"
                     className="z-10 bg-indigo-50 border-indigo-500 text-indigo-600 hover:bg-indigo-100 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
                   >

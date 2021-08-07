@@ -14,7 +14,7 @@ module.exports = {
   trailingSlash: true,
   exportPathMap() {
     return {
-      '/': { page: '/' },
+      'out/': { page: '/' },
       'out/cs': { page: '/cs' },
     };
   },
