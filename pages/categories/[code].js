@@ -98,7 +98,7 @@ const Post = () => {
     if (router.isReady) {
       const category = code.split('.')[0];
       const filepath = `${category}.js`;
-      const docs = require(`../../data/${filepath}`);
+      const docs = require(`data/${filepath}`);
       docs.default.forEach((doc) => {
         if (doc.code.trim() == code) {
           setDesc(doc.desc);
