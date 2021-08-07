@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable import/extensions */
 import { React, useEffect, useState } from 'react';
-import styles from '../styles/Home.module.css';
 import Navbar from '../components/navbar';
 import cs from '../data/cs.js';
 
