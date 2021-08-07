@@ -16,75 +16,97 @@ import Navbar from '../../components/navbar';
 const years0to9 = [
   {
     year: '2000',
+    code: '0',
   },
   {
     year: '2001',
+    code: '01',
   },
   {
     year: '2002',
+    code: '02',
   },
   {
     year: '2003',
+    code: '03',
   },
   {
     year: '2004',
+    code: '04',
   },
   {
     year: '2005',
+    code: '05',
   },
   {
     year: '2006',
+    code: '06',
   },
   {
     year: '2007',
+    code: '07',
   },
   {
     year: '2008',
+    code: '08',
   },
   {
     year: '2009',
+    code: '09',
   },
 ];
 
 const years10to20 = [
   {
     year: '2010',
+    code: '10',
   },
   {
     year: '2011',
+    code: '11',
   },
   {
     year: '2012',
+    code: '12',
   },
   {
     year: '2013',
+    code: '13',
   },
   {
     year: '2014',
+    code: '14',
   },
   {
     year: '2015',
+    code: '15',
   },
   {
     year: '2016',
+    code: '16',
   },
   {
     year: '2017',
+    code: '17',
   },
   {
     year: '2018',
+    code: '18',
   },
   {
     year: '2019',
+    code: '19',
   },
 ];
 
 const years20to21 = [
   {
     year: '2020',
+    code: '20',
   },
   {
     year: '2021',
+    code: '21',
   },
 ];
 
@@ -93,9 +115,11 @@ const Post = () => {
   const { code } = router.query;
   const [desc, setDesc] = useState('');
   const [name, setName] = useState('');
+  const [ref, setRef] = useState('');
 
   useEffect(() => {
     if (router.isReady) {
+      setRef(code);
       const category = code.split('.')[0];
       const filepath = `${category}.js`;
       const docs = require(`data/${filepath}`);
@@ -138,7 +162,7 @@ const Post = () => {
 
                 {years0to9.map((person) => (
                   <a
-                    href={`/list/${code}/${person.year}`}
+                    href={`/year/${ref}/${person.code}`}
                     aria-current="page"
                     className="z-10 bg-indigo-50 border-indigo-500 text-indigo-600 hover:bg-indigo-100 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
                   >
@@ -151,7 +175,7 @@ const Post = () => {
               <nav className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
                 {years10to20.map((person) => (
                   <a
-                    href={`/list/${code}/${person.year}`}
+                    href={`/year/${ref}/${person.code}`}
                     aria-current="page"
                     className="z-10 bg-indigo-50 border-indigo-500 text-indigo-600 hover:bg-indigo-100 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
                   >
@@ -164,7 +188,7 @@ const Post = () => {
               <nav className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
                 {years20to21.map((person) => (
                   <a
-                    href={`/list/${code}/${person.year}`}
+                    href={`/year/${ref}/${person.code}`}
                     aria-current="page"
                     className="z-10 bg-indigo-50 border-indigo-500 text-indigo-600 hover:bg-indigo-100 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
                   >
