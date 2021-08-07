@@ -20,7 +20,7 @@ export default function Home() {
 
         <div className="md:items-center">
           <center>
-            <h2 className="text-2xl font-bold leading-7 text-black sm:text-3xl sm:truncate">Welcome to Xirva.org</h2>
+            <h2 className="text-xl font-bold leading-7 text-black sm:text-3xl sm:truncate">Welcome to Xirva.org</h2>
             <br />
             <h2 className="text-xl leading-7 text-black sm:text-xl sm:truncate">
               Publish and Browse scientific Papers
@@ -37,13 +37,13 @@ export default function Home() {
           {actions.map((person) => (
             <div
               key={person.name}
-              className="relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
+              className="relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-gray-600 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
             >
               <div className="flex-shrink-0">
                 <person.icon className="h-6 w-6" aria-hidden="true" />
               </div>
               <div className="flex-1 min-w-0">
-                <a href={person.href} className="focus:outline-none">
+                <a href={person.href} className="focus:outline-none text-center">
                   <span className="absolute inset-0" aria-hidden="true" />
                   <p className="text-sm font-medium text-gray-900">{person.name}</p>
                 </a>

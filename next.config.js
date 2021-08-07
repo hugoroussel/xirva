@@ -8,7 +8,6 @@ module.exports = {
   exportPathMap() {
     return {
       '/': { page: '/' },
-      '/cs': { page: '/cs' },
     };
   },
 };

@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-filename-extension */
+/* eslint-disable react/react-in-jsx-scope */
 import Head from 'next/head';
 import { Web3Storage } from 'web3.storage';
 import { saveAs } from 'file-saver';
