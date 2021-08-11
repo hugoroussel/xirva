@@ -81,8 +81,6 @@ const Post = () => {
                     <br />
                     <p className="text-xs text-blue-500">
                       {article.authors}
-                      ,
-                      {' '}
                     </p>
                     <p className="text-xs text-gray-500">
                       {article.update_date}

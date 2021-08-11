@@ -23,7 +23,7 @@ export default function Home() {
             <h2 className="text-xl font-bold leading-7 text-black sm:text-3xl sm:truncate">Welcome to Xirva.org</h2>
             <br />
             <h2 className="text-xl leading-7 text-black sm:text-xl sm:truncate">
-              Publish and Browse scientific Papers
+              Publish and Browse Scientific Papers
               {' '}
               <br />
               on the Open Web
@@ -51,7 +51,27 @@ export default function Home() {
             </div>
           ))}
         </div>
-
+        <br />
+        <br />
+        <br />
+        <center>
+          <footer>
+            <div className="space-x-2 align-middle pr-10">
+              <div className="inline-block align-middle text-xl">Powered by</div>
+              <div className="inline-block align-middle">
+                {' '}
+                <img
+                  className="h-10 w-24"
+                  src="https://upload.wikimedia.org/wikipedia/commons/c/c2/IPFS_logo.png"
+                  alt="ipfs logo"
+                />
+              </div>
+            </div>
+          </footer>
+        </center>
+        <br />
+        <br />
+        <br />
       </div>
 
     </>
