@@ -8,6 +8,7 @@ import { React } from 'react';
 import Navbar from '../components/navbar';
 import actions from '../data/generalCategories';
 
+// eslint-disable-next-line no-unused-vars
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }

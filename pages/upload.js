@@ -1,15 +1,18 @@
+/* eslint-disable no-alert */
+/* eslint-disable react/button-has-type */
 /* eslint-disable max-len */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable react/react-in-jsx-scope */
-import Head from 'next/head';
 import { Web3Storage } from 'web3.storage';
-import { saveAs } from 'file-saver';
 import { Switch } from '@headlessui/react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ExclamationIcon } from '@heroicons/react/solid';
-import styles from '../styles/Home.module.css';
+import { ethers } from 'ethers';
 import Navbar from '../components/navbar';
+import xirva from '../contracts/abi';
+
+const XIRVA_CONTRACT = '0x0FC1fC84c65C93fd79cC042D09f1789BB4b53FF2';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -17,35 +20,72 @@ function classNames(...classes) {
 
 export default function Upload() {
   const [enabled, setEnabled] = useState(false);
-  const [file, setFile] = useState(null);
 
   // be careful to not push tokens on the VCS! Old one was revoked
   function getAccessToken() {
     return 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDBGNEI5OWE0QTdiZTBBNzA3OEE0OGRDNjQwZEZjMjY3QzI2MDAxRjAiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2Mjg3NzE1MDkzODYsIm5hbWUiOiJ4aXJ2YTIifQ.AW16Sau5kIPMk0ZlFuqpEalGzxWft0oVc6-UEgPIYb4';
   }
 
+  function indexing() {
+    // eslint-disable-next-line global-require
+    const data = require('../data/new/new.json');
+    data.new.push('hello');
+  }
+
   function makeStorageClient() {
     return new Web3Storage({ token: getAccessToken() });
   }
 
-  function getFiles() {
-    const fileInput = document.querySelector('input[type="file"]');
-    setFile(fileInput.files);
+  async function getXirvaContract() {
+    const provider = new ethers.providers.JsonRpcProvider('https://rpc-mainnet.matic.network');
+    const xirvaContract = new ethers.Contract(XIRVA_CONTRACT, xirva, provider);
+    return xirvaContract;
+  }
+
+  async function getAccount() {
+    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+    const account = accounts[0];
+    return account;
   }
 
   async function storeFiles(files) {
     const client = makeStorageClient();
     const cid = await client.put(files);
-    console.log('stored files with cid:', cid);
     return cid;
   }
 
-  function uploadToIPFS() {
-    const fileInput = document.querySelector('input[type="file"]');
-    console.log('uploading to IPFS', fileInput.files[0].name);
-    const cid = storeFiles(fileInput.files);
-    console.log(cid);
+  async function mint(cid) {
+    const xc = await getXirvaContract();
+    const res = await xc.populateTransaction.createCollectible(cid);
+    res.from = await getAccount();
+    res.chainId = 137;
+    const txHash = await window.ethereum.request({
+      method: 'eth_sendTransaction',
+      params: [res],
+    });
+    alert('your tx hash', txHash);
   }
+
+  async function uploadToIPFS() {
+    const fileInput = document.querySelector('input[type="file"]');
+    // console.log('uploading to IPFS', fileInput.files[0].name);
+    const cid = storeFiles(fileInput.files);
+    if (enabled) {
+      alert('mint NFT?');
+      await mint(cid);
+    } else {
+      alert('uploaded to IPFS', cid);
+    }
+  }
+
+  useEffect(() => {
+    if (typeof window.ethereum !== 'undefined') {
+      // alert('MetaMask is installed!');
+      getAccount();
+    } else {
+      // alert('Please use Metamask to use this application');
+    }
+  }, []);
 
   return (
     <>
@@ -60,7 +100,7 @@ export default function Upload() {
                 <ExclamationIcon className="h-5 w-5 text-yellow-400" aria-hidden="true" />
               </div>
               <div className="ml-3">
-                <h3 className="text-sm font-medium text-yellow-800">Attention needed</h3>
+                <h3 className="text-sm font-medium text-yellow-800">Attention</h3>
                 <div className="mt-2 text-sm text-yellow-700">
                   <p>
                     This project is in beta. Use at your own risk.
@@ -136,7 +176,6 @@ export default function Upload() {
                                 name="file-upload"
                                 type="file"
                                 className="sr-only"
-                                onChange={() => { getFiles(); }}
                               />
                             </label>
                             <p className="pl-1">or drag and drop</p>
@@ -291,6 +330,13 @@ export default function Upload() {
                 >
                   Save
                 </button>
+
+                <button
+                  className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  onClick={(e) => { e.preventDefault(); indexing(); }}
+                >
+                  Test
+                </button>
               </div>
             </div>
           </form>
@@ -315,7 +361,7 @@ export default function Upload() {
               <img
                 className="h-8 w-100"
                 src="https://polygon.technology/media-kit/polygon-logo.svg"
-                alt="ipfs logo"
+                alt="polygon logo"
               />
             </div>
           </div>
