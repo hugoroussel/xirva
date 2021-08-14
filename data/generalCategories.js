@@ -3,7 +3,8 @@ import {
   BeakerIcon,
   CalculatorIcon, ChartBarIcon,
   CurrencyDollarIcon, DesktopComputerIcon,
-  InformationCircleIcon, LightningBoltIcon,
+  LightningBoltIcon,
+  CashIcon,
 } from '@heroicons/react/solid';
 
 const gencat = [
@@ -13,8 +14,8 @@ const gencat = [
   { name: 'Mathematics', href: '/math', icon: CalculatorIcon },
   { name: 'Physics', href: '/physics', icon: AcademicCapIcon },
   { name: 'Quantitative Biology', href: '/bio', icon: BeakerIcon },
+  { name: 'Quantitative Finance', href: '/finance', icon: CashIcon },
   { name: 'Statistics', href: '/stat', icon: ChartBarIcon },
-  { name: 'About', href: '/about', icon: InformationCircleIcon },
 ];
 
 export default gencat;

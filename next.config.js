@@ -23,6 +23,7 @@ module.exports = {
       '/stat': { page: '/stat' },
       '/about': { page: '/about' },
       '/upload': { page: '/upload' },
+      '/finance': { page: '/finance' },
       '/new': { page: '/new' },
     };
     return paths;
