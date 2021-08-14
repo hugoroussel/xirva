@@ -15,6 +15,11 @@ module.exports = {
     const paths = {
       '/': { page: '/' },
       '/cs': { page: '/cs' },
+      '/bio': { page: '/bio' },
+      '/econ': { page: '/econ' },
+      '/eess': { page: '/eess' },
+      '/math': { page: '/math' },
+      '/physics': { page: '/physics' },
     };
     return paths;
   },
