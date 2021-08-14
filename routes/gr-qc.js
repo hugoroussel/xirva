@@ -1,0 +1,2 @@
+const qr = [{ code: 'gr-qc ', name: 'General Relativity and Quantum Cosmology', desc: "General Relativity and Quantum Cosmology Areas of gravitational physics, including experiments and observations related to the detection and interpretation of gravitational waves, experimental tests of gravitational theories, computational general relativity, relativistic astrophysics, solutions to Einstein's equations and their properties, alternative theories of gravity, classical and quantum cosmology, and quantum gravity." }];
+export default qr;

@@ -285,27 +285,30 @@ const Post = () => {
                   </div>
                 </div>
                 <br />
-                <br />
               </>
             ))}
           </>
         ) : (
-          <div className="bg-white shadow sm:rounded-lg">
-            <div className="px-4 py-5 sm:p-6">
-              <h3 className="text-lg leading-6 font-medium text-gray-900 text-center">
+          <>
+            <div className="bg-white shadow sm:rounded-lg">
+              <div className="px-4 py-5 sm:p-6">
+                <h3 className="text-lg leading-6 font-medium text-gray-900 text-center">
 
-                Loading articles indexes from IPFS..
+                  Loading articles indexes from IPFS..
 
-              </h3>
-              <center>
-                <img
-                  src="https://i.pinimg.com/originals/9c/1c/40/9c1c4007b2da3330502be886db9ecac1.gif"
-                  alt="loading gif"
-                  className="h-40 w-42 bg-opacity-0"
-                />
-              </center>
+                </h3>
+                <center>
+                  <img
+                    src="https://i.pinimg.com/originals/9c/1c/40/9c1c4007b2da3330502be886db9ecac1.gif"
+                    alt="loading gif"
+                    className="h-40 w-42 bg-opacity-0"
+                  />
+                </center>
+              </div>
             </div>
-          </div>
+            <br />
+            <br />
+          </>
         )}
 
       </div>

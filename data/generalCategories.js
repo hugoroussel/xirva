@@ -14,7 +14,7 @@ const gencat = [
   { name: 'Physics', href: '/physics', icon: AcademicCapIcon },
   { name: 'Quantitative Biology', href: '/bio', icon: BeakerIcon },
   { name: 'Statistics', href: '/stat', icon: ChartBarIcon },
-  { name: 'About', href: '/', icon: InformationCircleIcon },
+  { name: 'About', href: '/about', icon: InformationCircleIcon },
 ];
 
 export default gencat;

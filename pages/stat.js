@@ -6,13 +6,13 @@
 import { React, useEffect, useState } from 'react';
 import router from 'next/router';
 import Navbar from '../components/navbar';
-import econ from '../data/stat.js';
+import stat from '../data/stat.js';
 
 export default function CS() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    const copycs = econ;
+    const copycs = stat;
     data.sort((a, b) => {
       const keyA = a.name;
       const keyB = b.name;
