@@ -1,5 +1,9 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable import/extensions */
 /* eslint-disable react/jsx-filename-extension */
+import router from 'next/router';
 import { React } from 'react';
 import Navbar from '../components/navbar';
 import actions from '../data/generalCategories';
@@ -43,7 +47,10 @@ export default function Home() {
                 <person.icon className="h-6 w-6" aria-hidden="true" />
               </div>
               <div className="flex-1 min-w-0">
-                <a href={person.href} className="focus:outline-none text-center">
+                <a
+                  className="focus:outline-none text-center"
+                  onClick={() => { router.push(person.href); }}
+                >
                   <span className="absolute inset-0" aria-hidden="true" />
                   <p className="text-sm font-medium text-gray-900">{person.name}</p>
                 </a>
