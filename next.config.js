@@ -21,9 +21,9 @@ module.exports = {
       '/math': { page: '/math' },
       '/physics': { page: '/physics' },
       '/stat': { page: '/stat' },
-      '/categories': { page: '/categories' },
-      '/list': { page: '/list' },
-      '/year': { page: '/year' },
+      '/categories': { page: '/categories/[code]' },
+      '/list': { page: '/list/[code]/[yearmonth]' },
+      '/year': { page: '/year/[code]' },
     };
     return paths;
   },
