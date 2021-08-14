@@ -23,7 +23,7 @@ export default function Home() {
           <center>
             <br />
             <br />
-            <h2 className="text-6xl font-bold leading-7 text-black-900 sm:text-5xl hover:opacity-25">Welcome to Xirva</h2>
+            <h2 className="text-6xl font-bold leading-1 text-black-900 sm:text-5xl hover:opacity-25">Welcome to Xirva</h2>
             <br />
             <br />
             <h2 className="text-3xl leading-7 text-black sm:text-xl sm:truncate hover:opacity-25">
