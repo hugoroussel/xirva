@@ -39,22 +39,17 @@ export default function Navbar() {
                 <div className="flex-shrink-0 flex items-center">
                   <a
                     href="/"
+                    className="font-medium text-4xl pb-2"
                   >
-                    Xirva.org
+                    Xirva
                   </a>
                 </div>
                 <div className="hidden lg:ml-6 lg:flex lg:space-x-8">
                   {/* Current: "border-indigo-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" */}
-                  <a
-                    href="/"
-                    className="border-indigo-500 text-gray-900 inline-flex items-center px-1 pt-1 text-sm font-medium"
-                  >
-                    Home
-                  </a>
 
                   <a
                     href="/upload"
-                    className="border-indigo-500 text-gray-900 inline-flex items-center px-1 pt-1 text-sm font-medium"
+                    className="border-indigo-500 text-gray-900 inline-flex items-center text-md font-medium"
                   >
                     Upload
                   </a>

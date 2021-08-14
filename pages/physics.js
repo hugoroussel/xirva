@@ -44,10 +44,10 @@ export default function CS() {
         <div>
           <br />
           <br />
-          <h3 className="text-3xl leading-6 font-medium text-gray-900">All Physics Categories</h3>
+          <h3 className="text-4xl leading-6 font-medium text-gray-900">All Physics Categories</h3>
           <br />
           <br />
-          <h3 className="text-md leading-6 font-medium text-gray-900">Astrophysics</h3>
+          <h3 className="text-xl underline leading-6 font-medium text-gray-900">Astrophysics</h3>
           <br />
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-5">
             {astro.map((person) => (
@@ -69,7 +69,7 @@ export default function CS() {
             ))}
           </div>
           <br />
-          <h3 className="text-md leading-6 font-medium text-gray-900">Condensed Matter</h3>
+          <h3 className="text-xl underline leading-6 font-medium text-gray-900">Condensed Matter</h3>
           <br />
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-5">
             {cond.map((person) => (
@@ -91,7 +91,7 @@ export default function CS() {
             ))}
           </div>
           <br />
-          <h3 className="text-md leading-6 font-medium text-gray-900">General Relativity and Quantum Cosmology</h3>
+          <h3 className="text-xl underline leading-6 font-medium text-gray-900">General Relativity and Quantum Cosmology</h3>
           <br />
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-5">
             {gr.map((person) => (
@@ -113,7 +113,7 @@ export default function CS() {
             ))}
           </div>
           <br />
-          <h3 className="text-md leading-6 font-medium text-gray-900">High Energy Physics</h3>
+          <h3 className="text-xl underline leading-6 font-medium text-gray-900">High Energy Physics</h3>
           <br />
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-5">
             {hepex.concat(heplat, hepth, hepph).map((person) => (
@@ -135,7 +135,7 @@ export default function CS() {
             ))}
           </div>
           <br />
-          <h3 className="text-md leading-6 font-medium text-gray-900">Mathematical Physics</h3>
+          <h3 className="text-xl underline leading-6 font-medium text-gray-900">Mathematical Physics</h3>
           <br />
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-5">
             {math.map((person) => (
@@ -157,7 +157,7 @@ export default function CS() {
             ))}
           </div>
           <br />
-          <h3 className="text-md leading-6 font-medium text-gray-900">Non Linear</h3>
+          <h3 className="text-xl underline leading-6 font-medium text-gray-900">Non Linear</h3>
           <br />
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-5">
             {nlin.map((person) => (
@@ -179,7 +179,7 @@ export default function CS() {
             ))}
           </div>
           <br />
-          <h3 className="text-md leading-6 font-medium text-gray-900">Nuclear Physics</h3>
+          <h3 className="text-xl underline  leading-6 font-medium text-gray-900">Nuclear Physics</h3>
           <br />
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-5">
             {nucl.concat(nucl1).map((person) => (
@@ -201,7 +201,7 @@ export default function CS() {
             ))}
           </div>
           <br />
-          <h3 className="text-md leading-6 font-medium text-gray-900">Physics</h3>
+          <h3 className="text-xl underline leading-6 font-medium text-gray-900">Physics</h3>
           <br />
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-5">
             {phy.map((person) => (
@@ -223,7 +223,6 @@ export default function CS() {
             ))}
           </div>
           <br />
-
           <br />
           <br />
         </div>

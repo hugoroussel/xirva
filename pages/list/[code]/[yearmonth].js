@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable max-len */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable eqeqeq */
@@ -137,7 +139,18 @@ const Post = () => {
                           />
                         </button>
                       </a>
-
+                    </div>
+                    <div className="mt-5 inline-block pl-20">
+                      <a
+                        onClick={() => { router.push(`/list/${code}/${yearmonth}/${article.id}`); }}
+                      >
+                        <button
+                          type="button"
+                          className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                        >
+                          Expand
+                        </button>
+                      </a>
                     </div>
                   </div>
                 </div>

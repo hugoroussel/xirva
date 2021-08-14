@@ -19,12 +19,12 @@ export default function Home() {
 
       <div className="max-w-3xl mx-auto sm:px-6 lg:px-12">
         <br />
-        <br />
-        <br />
-
         <div className="md:items-center">
           <center>
-            <h2 className="text-6xl font-bold leading-7 text-black-900 sm:text-5xl hover:opacity-25">Welcome to Xirva.org</h2>
+            <br />
+            <br />
+            <h2 className="text-6xl font-bold leading-7 text-black-900 sm:text-5xl hover:opacity-25">Welcome to Xirva</h2>
+            <br />
             <br />
             <h2 className="text-3xl leading-7 text-black sm:text-xl sm:truncate hover:opacity-25">
               Publish and Browse Scientific Papers
@@ -52,7 +52,7 @@ export default function Home() {
                   onClick={() => { router.push(person.href); }}
                 >
                   <span className="absolute inset-0" aria-hidden="true" />
-                  <p className="text-sm font-medium text-gray-900">{person.name}</p>
+                  <p className="text-md font-medium text-gray-900">{person.name}</p>
                 </a>
               </div>
             </div>
@@ -63,7 +63,7 @@ export default function Home() {
         <br />
         <center>
           <footer>
-            <div className="space-x-2 align-middle pr-10">
+            <div className="space-x-2 align-middle">
               <div className="inline-block align-middle text-xl">Powered by</div>
               <div className="inline-block align-middle">
                 {' '}
@@ -76,11 +76,7 @@ export default function Home() {
             </div>
           </footer>
         </center>
-        <br />
-        <br />
-        <br />
       </div>
-
     </>
   );
 }

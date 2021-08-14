@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-multi-spaces */
 /* eslint-disable import/no-duplicates */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
@@ -232,62 +233,73 @@ const Post = () => {
           <>
             {allDocs.slice(0, shownArticles).map((article) => (
               <>
-                <a>
-                  <div className="bg-white shadow-xl sm:rounded-lg">
-                    <div className="px-4 py-3 sm:p-6">
-                      <h3 className="text-lg leading-6 font-medium text-gray-900">
-                        {article.title}
-                      </h3>
-                      <br />
-                      <p className="text-xs">{article.abstract}</p>
-                      <br />
-                      <p className="text-xs text-blue-500 hover:underline">
-                        {article.authors}
-                      </p>
-                      <p className="text-xs text-gray-500">
-                        {article.update_date}
-                      </p>
-                      <div className="mt-2 max-w-xl text-sm text-gray-500" />
-                      <div className="mt-5 inline-block">
+                <div className="bg-white shadow-xl sm:rounded-lg">
+                  <div className="px-4 py-3 sm:p-6">
+                    <h3 className="text-lg leading-6 font-medium text-gray-900">
+                      {article.title}
+                    </h3>
+                    <br />
+                    <p className="text-xs">{article.abstract}</p>
+                    <br />
+                    <p className="text-xs text-blue-500 hover:underline">
+                      {article.authors}
+                    </p>
+                    <p className="text-xs text-gray-500">
+                      {article.update_date}
+                    </p>
+                    <div className="mt-2 max-w-xl text-sm text-gray-500" />
+                    <div className="mt-5 inline-block">
+                      <button
+                        type="button"
+                        className="inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-blue-700 bg-blue-100 hover:blue-red-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:text-sm"
+                      >
+                        Download from
+                        &nbsp;
+                        <img
+                          src="https://upload.wikimedia.org/wikipedia/commons/1/18/Ipfs-logo-1024-ice-text.png"
+                          className="h-5 w-5"
+                          alt="IPFS logo"
+                        />
+                        &nbsp;
+                        (coming soon)
+                      </button>
+
+                    </div>
+                      &nbsp;
+                    <div className="mt-5 inline-block pr-14">
+                      <a
+                        href={`https://arxiv.org/pdf/${article.id}.pdf`}
+                      >
                         <button
                           type="button"
-                          className="inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-blue-700 bg-blue-100 hover:blue-red-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:text-sm"
+                          className="inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-red-700 bg-red-100 hover:blue-red-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:text-sm"
                         >
                           Download from
                           &nbsp;
                           <img
-                            src="https://upload.wikimedia.org/wikipedia/commons/1/18/Ipfs-logo-1024-ice-text.png"
+                            src="https://oasismath.org/resources-directory/img/arxiv.png"
                             className="h-5 w-5"
                             alt="IPFS logo"
                           />
-                          &nbsp;
-                          (coming soon)
                         </button>
-
-                      </div>
-                      &nbsp;
-                      <div className="mt-5 inline-block">
-                        <a
-                          href={`https://arxiv.org/pdf/${article.id}.pdf`}
-                        >
-                          <button
-                            type="button"
-                            className="inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-red-700 bg-red-100 hover:blue-red-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:text-sm"
-                          >
-                            Download from
-                            &nbsp;
-                            <img
-                              src="https://oasismath.org/resources-directory/img/arxiv.png"
-                              className="h-5 w-5"
-                              alt="IPFS logo"
-                            />
-                          </button>
-                        </a>
-
-                      </div>
+                      </a>
                     </div>
+
+                    <div className="mt-5 inline-block pl-20">
+                      <a
+                        onClick={() => { router.push(`/list/${code}/2107/${article.id}`); }}
+                      >
+                        <button
+                          type="button"
+                          className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                        >
+                          Expand
+                        </button>
+                      </a>
+                    </div>
+
                   </div>
-                </a>
+                </div>
                 <br />
               </>
             ))}
