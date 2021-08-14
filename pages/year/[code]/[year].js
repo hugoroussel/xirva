@@ -1,3 +1,6 @@
+/* eslint-disable import/no-duplicates */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable max-len */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable eqeqeq */
@@ -11,6 +14,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import router from 'next/router';
 import Navbar from '../../../components/navbar';
 
 const months = [
@@ -65,7 +69,7 @@ const months = [
 ];
 
 const Post = () => {
-  const router = useRouter();
+  const router1 = useRouter();
   const { code } = router.query;
   const { year } = router.query;
 
@@ -74,7 +78,7 @@ const Post = () => {
   const [acode, setAcode] = useState('');
 
   useEffect(() => {
-    if (router.isReady) {
+    if (router1.isReady) {
       console.log('we have the code', code);
       const category = code.split('.')[0];
       setAcode(category);
@@ -90,7 +94,7 @@ const Post = () => {
         setRyear(year);
       }
     }
-  }, [router]);
+  }, [router1]);
 
   return (
     <>
@@ -122,7 +126,7 @@ const Post = () => {
                 >
                   <div className="flex-1 min-w-0">
                     <a
-                      href={`/list/${code}/${ryear + month.code}`}
+                      onClick={() => { router.push(`/list/${code}/${ryear + month.code}`); }}
                       className="focus:outline-none"
                     >
                       <span className="absolute inset-0" aria-hidden="true" />

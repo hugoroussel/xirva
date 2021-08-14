@@ -26,7 +26,7 @@ export default function Home() {
           <center>
             <h2 className="text-xl font-bold leading-7 text-black sm:text-3xl sm:truncate">Welcome to Xirva.org</h2>
             <br />
-            <h2 className="text-xl leading-7 text-black sm:text-xl sm:truncate">
+            <h2 className="text-3xl leading-7 text-black sm:text-xl sm:truncate">
               Publish and Browse Scientific Papers
               {' '}
               <br />
