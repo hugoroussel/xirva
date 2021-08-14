@@ -70,11 +70,12 @@ const months = [
 
 const Post = () => {
   const router1 = useRouter();
-  const { code } = router.query;
-  const { year } = router.query;
+  const { code } = router1.query;
+  const { year } = router1.query;
 
   const [ayear, setAyear] = useState('');
   const [ryear, setRyear] = useState('');
+  // eslint-disable-next-line no-unused-vars
   const [acode, setAcode] = useState('');
 
   useEffect(() => {
