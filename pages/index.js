@@ -24,9 +24,9 @@ export default function Home() {
 
         <div className="md:items-center">
           <center>
-            <h2 className="text-6xl font-bold leading-7 text-indigo-900 sm:text-5xl">Welcome to Xirva.org</h2>
+            <h2 className="text-6xl font-bold leading-7 text-black-900 sm:text-5xl hover:opacity-25">Welcome to Xirva.org</h2>
             <br />
-            <h2 className="text-3xl leading-7 text-black sm:text-xl sm:truncate">
+            <h2 className="text-3xl leading-7 text-black sm:text-xl sm:truncate hover:opacity-25">
               Publish and Browse Scientific Papers
               {' '}
               <br />

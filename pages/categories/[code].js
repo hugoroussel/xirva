@@ -120,6 +120,7 @@ const Post = () => {
   const [first, setFirst] = useState(false);
   const [allDocs, setAllDocs] = useState([]);
   const [shownArticles, setShownArticles] = useState(0);
+  const [loading, setLoading] = useState(true);
 
   async function getArticles(category, period) {
     const docs = require(`data/indexing/${category}.json`);
@@ -140,6 +141,7 @@ const Post = () => {
     const filetext = await myfile.text();
     const obj = JSON.parse(filetext);
     setAllDocs(obj);
+    setLoading(false);
   }
 
   useEffect(() => {
@@ -224,77 +226,87 @@ const Post = () => {
         </h3>
         <br />
 
-        {allDocs.slice(0, shownArticles).map((article) => (
+        {!loading ? (
           <>
-            <div className="bg-white shadow-xl sm:rounded-lg">
-              <div className="px-4 py-3 sm:p-6">
-                <h3 className="text-lg leading-6 font-medium text-gray-900">
-                  {article.title}
-                </h3>
-                <br />
-                <p className="text-xs">{article.abstract}</p>
-                <br />
-                <p className="text-xs text-blue-500 hover:underline">
-                  {article.authors}
-                </p>
-                <p className="text-xs text-gray-500">
-                  {article.update_date}
-                </p>
-                <div className="mt-2 max-w-xl text-sm text-gray-500" />
-                <div className="mt-5 inline-block">
-                  <button
-                    type="button"
-                    className="inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-blue-700 bg-blue-100 hover:blue-red-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:text-sm"
-                  >
-                    Download from
-                    &nbsp;
-                    <img
-                      src="https://upload.wikimedia.org/wikipedia/commons/1/18/Ipfs-logo-1024-ice-text.png"
-                      className="h-5 w-5"
-                      alt="IPFS logo"
-                    />
-                    &nbsp;
-                    (coming soon)
-                  </button>
+            {allDocs.slice(0, shownArticles).map((article) => (
+              <>
+                <div className="bg-white shadow-xl sm:rounded-lg">
+                  <div className="px-4 py-3 sm:p-6">
+                    <h3 className="text-lg leading-6 font-medium text-gray-900">
+                      {article.title}
+                    </h3>
+                    <br />
+                    <p className="text-xs">{article.abstract}</p>
+                    <br />
+                    <p className="text-xs text-blue-500 hover:underline">
+                      {article.authors}
+                    </p>
+                    <p className="text-xs text-gray-500">
+                      {article.update_date}
+                    </p>
+                    <div className="mt-2 max-w-xl text-sm text-gray-500" />
+                    <div className="mt-5 inline-block">
+                      <button
+                        type="button"
+                        className="inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-blue-700 bg-blue-100 hover:blue-red-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:text-sm"
+                      >
+                        Download from
+                        &nbsp;
+                        <img
+                          src="https://upload.wikimedia.org/wikipedia/commons/1/18/Ipfs-logo-1024-ice-text.png"
+                          className="h-5 w-5"
+                          alt="IPFS logo"
+                        />
+                        &nbsp;
+                        (coming soon)
+                      </button>
 
-                </div>
-                    &nbsp;
-                <div className="mt-5 inline-block">
-                  <a
-                    href={`https://arxiv.org/pdf/${article.id}.pdf`}
-                  >
-                    <button
-                      type="button"
-                      className="inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-red-700 bg-red-100 hover:blue-red-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:text-sm"
-                    >
-                      Download from
+                    </div>
                       &nbsp;
-                      <img
-                        src="https://oasismath.org/resources-directory/img/arxiv.png"
-                        className="h-5 w-5"
-                        alt="IPFS logo"
-                      />
-                    </button>
-                  </a>
+                    <div className="mt-5 inline-block">
+                      <a
+                        href={`https://arxiv.org/pdf/${article.id}.pdf`}
+                      >
+                        <button
+                          type="button"
+                          className="inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-red-700 bg-red-100 hover:blue-red-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:text-sm"
+                        >
+                          Download from
+                          &nbsp;
+                          <img
+                            src="https://oasismath.org/resources-directory/img/arxiv.png"
+                            className="h-5 w-5"
+                            alt="IPFS logo"
+                          />
+                        </button>
+                      </a>
 
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-
-            <div><br /></div>
+                <br />
+                <br />
+              </>
+            ))}
           </>
-        ))}
+        ) : (
+          <div className="bg-white shadow sm:rounded-lg">
+            <div className="px-4 py-5 sm:p-6">
+              <h3 className="text-lg leading-6 font-medium text-gray-900 text-center">
 
-        <button
-          type="button"
-          className="text-blue-500 hover:underline"
-          onClick={(e) => { e.preventDefault(); setShownArticles(shownArticles + 5); }}
-        >
-          Show 5 more
-        </button>
-        <br />
-        <br />
-        <br />
+                Loading articles indexes from IPFS..
+
+              </h3>
+              <center>
+                <img
+                  src="https://i.pinimg.com/originals/9c/1c/40/9c1c4007b2da3330502be886db9ecac1.gif"
+                  alt="loading gif"
+                  className="h-40 w-42 bg-opacity-0"
+                />
+              </center>
+            </div>
+          </div>
+        )}
 
       </div>
     </>

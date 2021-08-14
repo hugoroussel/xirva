@@ -48,15 +48,14 @@ const Post = () => {
     const obj = JSON.parse(filetext);
     console.log(obj);
     setAllDocs(obj);
+    setLoading(false);
   }
 
   useEffect(() => {
     if (allDocs.length < 6 && allDocs.length >= 1) {
       setShownArticles(allDocs.length);
-      setLoading(false);
     } else {
       setShownArticles(5);
-      setLoading(false);
     }
   }, [allDocs]);
 
@@ -115,6 +114,8 @@ const Post = () => {
                           className="h-5 w-5"
                           alt="IPFS logo"
                         />
+                        &nbsp;
+                        (Coming soon)
                       </button>
 
                     </div>
@@ -162,12 +163,18 @@ const Post = () => {
           <>
             <div className="bg-white shadow sm:rounded-lg">
               <div className="px-4 py-5 sm:p-6">
-                <h3 className="text-lg leading-6 font-medium text-gray-900">
+                <h3 className="text-lg leading-6 font-medium text-gray-900 text-center">
 
-                  Loading articles..
+                  Loading articles indexes from IPFS..
 
                 </h3>
-                <div className="mt-2 max-w-xl text-sm text-gray-500" />
+                <center>
+                  <img
+                    src="https://i.pinimg.com/originals/9c/1c/40/9c1c4007b2da3330502be886db9ecac1.gif"
+                    alt="loading gif"
+                    className="h-40 w-42 bg-opacity-0"
+                  />
+                </center>
               </div>
             </div>
           </>
