@@ -7,6 +7,7 @@ import { Web3Storage } from 'web3.storage';
 import { saveAs } from 'file-saver';
 import { Switch } from '@headlessui/react';
 import { useState } from 'react';
+import { ExclamationIcon } from '@heroicons/react/solid';
 import styles from '../styles/Home.module.css';
 import Navbar from '../components/navbar';
 
@@ -16,10 +17,11 @@ function classNames(...classes) {
 
 export default function Upload() {
   const [enabled, setEnabled] = useState(false);
+  const [file, setFile] = useState(null);
 
   // be careful to not push tokens on the VCS! Old one was revoked
   function getAccessToken() {
-    return '';
+    return 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDBGNEI5OWE0QTdiZTBBNzA3OEE0OGRDNjQwZEZjMjY3QzI2MDAxRjAiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2Mjg3NzE1MDkzODYsIm5hbWUiOiJ4aXJ2YTIifQ.AW16Sau5kIPMk0ZlFuqpEalGzxWft0oVc6-UEgPIYb4';
   }
 
   function makeStorageClient() {
@@ -28,8 +30,7 @@ export default function Upload() {
 
   function getFiles() {
     const fileInput = document.querySelector('input[type="file"]');
-    console.log(fileInput.files[0].name);
-    return fileInput.files;
+    setFile(fileInput.files);
   }
 
   async function storeFiles(files) {
@@ -39,30 +40,35 @@ export default function Upload() {
     return cid;
   }
 
-  function clickMe() {
-    // storeFiles(getFiles())
-    // retrieveFiles(cid)
-  }
-
-  async function retrieveFiles(cid) {
-    const client = makeStorageClient();
-    const res = await client.get(cid);
-    console.log(`Got a response! [${res.status}] ${res.statusText}`);
-    if (!res.ok) {
-      throw new Error(`failed to get ${cid} - [${res.status}] ${res.statusText}`);
-    }
-    // unpack File objects from the response
-    const files = await res.files();
-    const myfile = files[0];
-    const FileSaver = require('file-saver');
-    FileSaver.saveAs(myfile, 'test.png');
+  function uploadToIPFS() {
+    const fileInput = document.querySelector('input[type="file"]');
+    console.log('uploading to IPFS', fileInput.files[0].name);
+    const cid = storeFiles(fileInput.files);
+    console.log(cid);
   }
 
   return (
     <>
       <Navbar />
       <div>
+
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <br />
+          <div className="rounded-md bg-yellow-50 p-4">
+            <div className="flex">
+              <div className="flex-shrink-0">
+                <ExclamationIcon className="h-5 w-5 text-yellow-400" aria-hidden="true" />
+              </div>
+              <div className="ml-3">
+                <h3 className="text-sm font-medium text-yellow-800">Attention needed</h3>
+                <div className="mt-2 text-sm text-yellow-700">
+                  <p>
+                    This project is in beta. Use at your own risk.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
           <br />
           <br />
           <br />
@@ -125,7 +131,13 @@ export default function Upload() {
                               className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
                             >
                               <span>Upload a file</span>
-                              <input id="file-upload" name="file-upload" type="file" className="sr-only" />
+                              <input
+                                id="file-upload"
+                                name="file-upload"
+                                type="file"
+                                className="sr-only"
+                                onChange={() => { getFiles(); }}
+                              />
                             </label>
                             <p className="pl-1">or drag and drop</p>
                           </div>
@@ -275,6 +287,7 @@ export default function Upload() {
                 <button
                   type="submit"
                   className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  onClick={(e) => { e.preventDefault(); uploadToIPFS(); }}
                 >
                   Save
                 </button>
@@ -283,6 +296,32 @@ export default function Upload() {
           </form>
         </div>
       </div>
+
+      <center>
+        <footer>
+          <div className="space-x-2 align-middle">
+            <div className="inline-block align-middle text-xl">Powered by</div>
+            <div className="inline-block align-middle">
+              {' '}
+              <img
+                className="h-10 w-24"
+                src="https://upload.wikimedia.org/wikipedia/commons/c/c2/IPFS_logo.png"
+                alt="ipfs logo"
+              />
+            </div>
+            +
+            <div className="inline-block align-middle">
+              {' '}
+              <img
+                className="h-8 w-100"
+                src="https://polygon.technology/media-kit/polygon-logo.svg"
+                alt="ipfs logo"
+              />
+            </div>
+          </div>
+        </footer>
+      </center>
+
       <br />
       <br />
       <br />
