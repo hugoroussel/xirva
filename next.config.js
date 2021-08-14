@@ -21,6 +21,7 @@ module.exports = {
       '/math': { page: '/math' },
       '/physics': { page: '/physics' },
       '/stat': { page: '/stat' },
+      '/about': { page: '/about' },
     };
     return paths;
   },
