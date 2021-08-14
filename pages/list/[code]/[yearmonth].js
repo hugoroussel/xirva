@@ -32,7 +32,15 @@ const Post = () => {
     const cid = docs[`${period}.json`];
     console.log(cid);
     const client = new Web3Storage({ token: API_TOKEN });
-    const res = await client.get(cid);
+    console.log('downloading');
+    let res = '';
+    try {
+      res = await client.get(cid);
+    } catch (e) {
+      console.log(e);
+      setLoading(false);
+      return;
+    }
     const files = await res.files();
     const myfile = files[0];
     const filetext = await myfile.text();
@@ -43,11 +51,12 @@ const Post = () => {
   }
 
   useEffect(() => {
-    setLoading(false);
-    if (allDocs.length < 6) {
+    if (allDocs.length < 6 && allDocs.length >= 1) {
       setShownArticles(allDocs.length);
+      setLoading(false);
     } else {
       setShownArticles(5);
+      setLoading(false);
     }
   }, [allDocs]);
 
@@ -65,19 +74,6 @@ const Post = () => {
       <Navbar />
       <br />
       <div className="max-w-3xl mx-auto sm:px-6 lg:px-8">
-        { loading ? (
-          <div className="bg-white shadow sm:rounded-lg">
-            <div className="px-4 py-5 sm:p-6">
-              <h3 className="text-lg leading-6 font-medium text-gray-900">
-
-                Loading articles..
-
-              </h3>
-              <div className="mt-2 max-w-xl text-sm text-gray-500" />
-            </div>
-          </div>
-        ) : (<></>)}
-
         { !loading ? (
           <div>
 
@@ -162,7 +158,20 @@ const Post = () => {
             <br />
 
           </div>
-        ) : (<></>)}
+        ) : (
+          <>
+            <div className="bg-white shadow sm:rounded-lg">
+              <div className="px-4 py-5 sm:p-6">
+                <h3 className="text-lg leading-6 font-medium text-gray-900">
+
+                  Loading articles..
+
+                </h3>
+                <div className="mt-2 max-w-xl text-sm text-gray-500" />
+              </div>
+            </div>
+          </>
+        )}
 
       </div>
 

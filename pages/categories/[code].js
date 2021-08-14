@@ -15,8 +15,10 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import router from 'next/router';
+import { Web3Storage } from 'web3.storage';
 import Navbar from '../../components/navbar';
 
+const API_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDBGNEI5OWE0QTdiZTBBNzA3OEE0OGRDNjQwZEZjMjY3QzI2MDAxRjAiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2Mjg3NzE1MDkzODYsIm5hbWUiOiJ4aXJ2YTIifQ.AW16Sau5kIPMk0ZlFuqpEalGzxWft0oVc6-UEgPIYb4';
 const actions = [
   {
     year: '2000',
@@ -116,6 +118,29 @@ const Post = () => {
   const [name, setName] = useState('Name');
   const [ref, setRef] = useState('');
   const [first, setFirst] = useState(false);
+  const [allDocs, setAllDocs] = useState([]);
+  const [shownArticles, setShownArticles] = useState(0);
+
+  async function getArticles(category, period) {
+    const docs = require(`data/indexing/${category}.json`);
+    console.log(docs);
+    const cid = docs[`${period}.json`];
+    console.log(cid);
+    const client = new Web3Storage({ token: API_TOKEN });
+    console.log('downloading');
+    let res = '';
+    try {
+      res = await client.get(cid);
+    } catch (e) {
+      console.log(e);
+      return;
+    }
+    const files = await res.files();
+    const myfile = files[0];
+    const filetext = await myfile.text();
+    const obj = JSON.parse(filetext);
+    setAllDocs(obj);
+  }
 
   useEffect(() => {
     if (router1.isReady && !first) {
@@ -131,8 +156,17 @@ const Post = () => {
           setName(doc.name);
         }
       });
+      getArticles(code, '2107');
     }
   }, [router1]);
+
+  useEffect(() => {
+    if (allDocs.length < 6 && allDocs.length >= 1) {
+      setShownArticles(allDocs.length);
+    } else {
+      setShownArticles(5);
+    }
+  }, [allDocs]);
 
   return (
     <>
@@ -149,12 +183,17 @@ const Post = () => {
               {' '}
               {name}
             </h3>
-            <div className="mt-2 max-w-xl text-sm text-gray-500">
+            <div className="mt-2 max-w-xl text-md text-gray-500">
               {desc}
             </div>
             <div className="mt-5" />
           </div>
         </div>
+        <br />
+
+        <h3 className="text-lg leading-6 font-medium text-gray-900">
+          Browse by year
+        </h3>
         <br />
         <div className="grid grid-cols-1 gap-2 sm:grid-cols-8">
           {actions.map((person) => (
@@ -175,6 +214,87 @@ const Post = () => {
             </div>
           ))}
         </div>
+
+        <br />
+
+        <h3 className="text-lg leading-6 font-medium text-gray-900">
+          Recents in
+          {' '}
+          {name}
+        </h3>
+        <br />
+
+        {allDocs.slice(0, shownArticles).map((article) => (
+          <>
+            <div className="bg-white shadow-xl sm:rounded-lg">
+              <div className="px-4 py-3 sm:p-6">
+                <h3 className="text-lg leading-6 font-medium text-gray-900">
+                  {article.title}
+                </h3>
+                <br />
+                <p className="text-xs">{article.abstract}</p>
+                <br />
+                <p className="text-xs text-blue-500 hover:underline">
+                  {article.authors}
+                </p>
+                <p className="text-xs text-gray-500">
+                  {article.update_date}
+                </p>
+                <div className="mt-2 max-w-xl text-sm text-gray-500" />
+                <div className="mt-5 inline-block">
+                  <button
+                    type="button"
+                    className="inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-blue-700 bg-blue-100 hover:blue-red-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:text-sm"
+                  >
+                    Download from
+                    &nbsp;
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/1/18/Ipfs-logo-1024-ice-text.png"
+                      className="h-5 w-5"
+                      alt="IPFS logo"
+                    />
+                    &nbsp;
+                    (coming soon)
+                  </button>
+
+                </div>
+                    &nbsp;
+                <div className="mt-5 inline-block">
+                  <a
+                    href={`https://arxiv.org/pdf/${article.id}.pdf`}
+                  >
+                    <button
+                      type="button"
+                      className="inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-red-700 bg-red-100 hover:blue-red-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:text-sm"
+                    >
+                      Download from
+                      &nbsp;
+                      <img
+                        src="https://oasismath.org/resources-directory/img/arxiv.png"
+                        className="h-5 w-5"
+                        alt="IPFS logo"
+                      />
+                    </button>
+                  </a>
+
+                </div>
+              </div>
+            </div>
+
+            <div><br /></div>
+          </>
+        ))}
+
+        <button
+          type="button"
+          className="text-blue-500 hover:underline"
+          onClick={(e) => { e.preventDefault(); setShownArticles(shownArticles + 5); }}
+        >
+          Show 5 more
+        </button>
+        <br />
+        <br />
+        <br />
 
       </div>
     </>
