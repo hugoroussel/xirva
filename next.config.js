@@ -20,6 +20,10 @@ module.exports = {
       '/eess': { page: '/eess' },
       '/math': { page: '/math' },
       '/physics': { page: '/physics' },
+      '/stat': { page: '/stat' },
+      '/categories': { page: '/categories' },
+      '/list': { page: '/list' },
+      '/year': { page: '/year' },
     };
     return paths;
   },

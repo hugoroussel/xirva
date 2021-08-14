@@ -28,7 +28,7 @@ export default function CS() {
         <div>
           <br />
           <br />
-          <h3 className="text-lg leading-6 font-medium text-gray-900">Computer Science</h3>
+          <h3 className="text-lg leading-6 font-medium text-gray-900">Biology</h3>
           <br />
           <br />
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-5">
