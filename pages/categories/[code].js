@@ -151,7 +151,9 @@ const Post = () => {
       setRef(code);
       const category = code.split('.')[0];
       const filepath = `${category}.js`;
+
       const docs = require(`routes/${filepath}`);
+
       docs.default.forEach((doc) => {
         if (doc.code.trim() == code) {
           setDesc(doc.desc);
@@ -230,63 +232,77 @@ const Post = () => {
           <>
             {allDocs.slice(0, shownArticles).map((article) => (
               <>
-                <div className="bg-white shadow-xl sm:rounded-lg">
-                  <div className="px-4 py-3 sm:p-6">
-                    <h3 className="text-lg leading-6 font-medium text-gray-900">
-                      {article.title}
-                    </h3>
-                    <br />
-                    <p className="text-xs">{article.abstract}</p>
-                    <br />
-                    <p className="text-xs text-blue-500 hover:underline">
-                      {article.authors}
-                    </p>
-                    <p className="text-xs text-gray-500">
-                      {article.update_date}
-                    </p>
-                    <div className="mt-2 max-w-xl text-sm text-gray-500" />
-                    <div className="mt-5 inline-block">
-                      <button
-                        type="button"
-                        className="inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-blue-700 bg-blue-100 hover:blue-red-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:text-sm"
-                      >
-                        Download from
-                        &nbsp;
-                        <img
-                          src="https://upload.wikimedia.org/wikipedia/commons/1/18/Ipfs-logo-1024-ice-text.png"
-                          className="h-5 w-5"
-                          alt="IPFS logo"
-                        />
-                        &nbsp;
-                        (coming soon)
-                      </button>
-
-                    </div>
-                      &nbsp;
-                    <div className="mt-5 inline-block">
-                      <a
-                        href={`https://arxiv.org/pdf/${article.id}.pdf`}
-                      >
+                <a>
+                  <div className="bg-white shadow-xl sm:rounded-lg">
+                    <div className="px-4 py-3 sm:p-6">
+                      <h3 className="text-lg leading-6 font-medium text-gray-900">
+                        {article.title}
+                      </h3>
+                      <br />
+                      <p className="text-xs">{article.abstract}</p>
+                      <br />
+                      <p className="text-xs text-blue-500 hover:underline">
+                        {article.authors}
+                      </p>
+                      <p className="text-xs text-gray-500">
+                        {article.update_date}
+                      </p>
+                      <div className="mt-2 max-w-xl text-sm text-gray-500" />
+                      <div className="mt-5 inline-block">
                         <button
                           type="button"
-                          className="inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-red-700 bg-red-100 hover:blue-red-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:text-sm"
+                          className="inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-blue-700 bg-blue-100 hover:blue-red-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:text-sm"
                         >
                           Download from
                           &nbsp;
                           <img
-                            src="https://oasismath.org/resources-directory/img/arxiv.png"
+                            src="https://upload.wikimedia.org/wikipedia/commons/1/18/Ipfs-logo-1024-ice-text.png"
                             className="h-5 w-5"
                             alt="IPFS logo"
                           />
+                          &nbsp;
+                          (coming soon)
                         </button>
-                      </a>
 
+                      </div>
+                      &nbsp;
+                      <div className="mt-5 inline-block">
+                        <a
+                          href={`https://arxiv.org/pdf/${article.id}.pdf`}
+                        >
+                          <button
+                            type="button"
+                            className="inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-red-700 bg-red-100 hover:blue-red-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:text-sm"
+                          >
+                            Download from
+                            &nbsp;
+                            <img
+                              src="https://oasismath.org/resources-directory/img/arxiv.png"
+                              className="h-5 w-5"
+                              alt="IPFS logo"
+                            />
+                          </button>
+                        </a>
+
+                      </div>
                     </div>
                   </div>
-                </div>
+                </a>
                 <br />
               </>
             ))}
+            <div>
+              <button
+                type="button"
+                className="text-blue-500 hover:underline"
+                onClick={(e) => { e.preventDefault(); setShownArticles(shownArticles + 5); }}
+              >
+                Show 5 more
+              </button>
+            </div>
+            <br />
+            <br />
+            <br />
           </>
         ) : (
           <>
