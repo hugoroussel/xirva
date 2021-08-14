@@ -1,8 +1,6 @@
 const path = require('path');
 
 module.exports = {
-  experimental: { granularChunks: true },
-  productionBrowserSourceMaps: false,
   webpack: (config) => {
     config.resolve.modules.push(path.resolve('./'));
     return config;
@@ -13,10 +11,11 @@ module.exports = {
     ignoreDuringBuilds: true,
   },
   trailingSlash: true,
-  exportPathMap() {
-    return {
-      'out/': { page: '/' },
-      'out/cs': { page: '/cs' },
+  async exportPathMap() {
+    const paths = {
+      '/': { page: '/' },
+      '/cs': { page: '/out/cs' },
     };
+    return paths;
   },
 };
