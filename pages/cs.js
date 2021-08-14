@@ -1,5 +1,9 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable import/extensions */
+import router from 'next/router';
 import { React, useEffect, useState } from 'react';
 import Navbar from '../components/navbar';
 import cs from '../data/cs.js';
@@ -8,6 +12,7 @@ export default function CS() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
+    console.log('sorting..');
     const copycs = cs;
     data.sort((a, b) => {
       const keyA = a.name;
@@ -23,7 +28,6 @@ export default function CS() {
   return (
     <>
       <Navbar />
-
       <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div>
           <br />
@@ -37,8 +41,12 @@ export default function CS() {
                 key={person.code}
                 className="relative rounded-lg border border-gray-300 bg-white px-3 py-2 shadow-sm flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
               >
+                {console.log('rendering')}
                 <div className="flex-1 min-w-0">
-                  <a href={`/categories/${person.code}`} className="focus:outline-none">
+                  <a
+                    className="focus:outline-none"
+                    onClick={() => { router.push(`/categories/${person.code}`); }}
+                  >
                     <span className="absolute inset-0" aria-hidden="true" />
                     <p className="text-sm font-medium text-gray-900 text-center">{person.name}</p>
                   </a>
@@ -49,9 +57,7 @@ export default function CS() {
           <br />
           <br />
         </div>
-
       </div>
-
       <div />
     </>
   );

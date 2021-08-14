@@ -75,8 +75,10 @@ const Post = () => {
 
   useEffect(() => {
     if (router.isReady) {
+      console.log('we have the code', code);
       const category = code.split('.')[0];
       setAcode(category);
+
       console.log(year);
       console.log(code);
       console.log('yes we have both parameters');
@@ -112,7 +114,7 @@ const Post = () => {
           <div className="px-4 py-5 sm:p-6">
             <h3 className="text-lg leading-6 font-medium text-gray-900">Months</h3>
             <br />
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-4">
               {months.map((month) => (
                 <div
                   key={month.month}

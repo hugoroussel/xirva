@@ -13,6 +13,98 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import Navbar from '../../components/navbar';
 
+const actions = [
+  {
+    year: '2000',
+    code: '0',
+  },
+  {
+    year: '2001',
+    code: '01',
+  },
+  {
+    year: '2002',
+    code: '02',
+  },
+  {
+    year: '2003',
+    code: '03',
+  },
+  {
+    year: '2004',
+    code: '04',
+  },
+  {
+    year: '2005',
+    code: '05',
+  },
+  {
+    year: '2006',
+    code: '06',
+  },
+  {
+    year: '2007',
+    code: '07',
+  },
+  {
+    year: '2008',
+    code: '08',
+  },
+  {
+    year: '2009',
+    code: '09',
+  },
+  {
+    year: '2010',
+    code: '10',
+  },
+  {
+    year: '2011',
+    code: '11',
+  },
+  {
+    year: '2012',
+    code: '12',
+  },
+  {
+    year: '2013',
+    code: '13',
+  },
+  {
+    year: '2014',
+    code: '14',
+  },
+  {
+    year: '2015',
+    code: '15',
+  },
+  {
+    year: '2016',
+    code: '16',
+  },
+  {
+    year: '2017',
+    code: '17',
+  },
+  {
+    year: '2018',
+    code: '18',
+  },
+  {
+    year: '2019',
+    code: '19',
+  },
+  {
+    year: '2020',
+    code: '20',
+  },
+  {
+    year: '2021',
+    code: '21',
+  },
+
+];
+
 const years0to9 = [
   {
     year: '2000',
@@ -113,16 +205,19 @@ const years20to21 = [
 const Post = () => {
   const router = useRouter();
   const { code } = router.query;
-  const [desc, setDesc] = useState('');
-  const [name, setName] = useState('');
+  const [desc, setDesc] = useState('Desc');
+  const [name, setName] = useState('Name');
   const [ref, setRef] = useState('');
+  const [first, setFirst] = useState(false);
 
   useEffect(() => {
-    if (router.isReady) {
+    if (router.isReady && !first) {
+      console.log('and this?', code);
+      setFirst(true);
       setRef(code);
       const category = code.split('.')[0];
       const filepath = `${category}.js`;
-      const docs = require(`data/${filepath}`);
+      const docs = require(`routes/${filepath}`);
       docs.default.forEach((doc) => {
         if (doc.code.trim() == code) {
           setDesc(doc.desc);
@@ -154,8 +249,24 @@ const Post = () => {
           </div>
         </div>
         <br />
-        <div className="bg-white px-4 py-3 flex items-center justify-between border-gray-200 sm:px-6">
+        <div className="grid grid-cols-1 gap-2 sm:grid-cols-8">
+          {actions.map((person) => (
+            <div
+              key={person.year}
+              className="relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex space-x-3 hover:border-gray-600 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
+            >
+              <div className="flex-0 min-w-0">
+                <a href={`/year/${ref}/${person.code}`} className="focus:outline-none text-center">
+                  <span className="absolute inset-0" aria-hidden="true" />
+                  <p className="text-md font-medium text-gray-900 text-center">{person.year}</p>
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
 
+        {/*
+        <div className="bg-white px-4 py-3 flex items-center justify-between border-gray-200 sm:px-6">
           <div className="sm:flex-1 sm:flex sm:items-center sm:justify-between">
             <div>
               <nav className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
@@ -200,6 +311,7 @@ const Post = () => {
             </div>
           </div>
         </div>
+          */}
 
       </div>
     </>
