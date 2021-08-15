@@ -26,12 +26,6 @@ export default function Upload() {
     return 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDBGNEI5OWE0QTdiZTBBNzA3OEE0OGRDNjQwZEZjMjY3QzI2MDAxRjAiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2Mjg3NzE1MDkzODYsIm5hbWUiOiJ4aXJ2YTIifQ.AW16Sau5kIPMk0ZlFuqpEalGzxWft0oVc6-UEgPIYb4';
   }
 
-  function indexing() {
-    // eslint-disable-next-line global-require
-    const data = require('../data/new/new.json');
-    data.new.push('hello');
-  }
-
   function makeStorageClient() {
     return new Web3Storage({ token: getAccessToken() });
   }
@@ -331,12 +325,6 @@ export default function Upload() {
                   Save
                 </button>
 
-                <button
-                  className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  onClick={(e) => { e.preventDefault(); indexing(); }}
-                >
-                  Test
-                </button>
               </div>
             </div>
           </form>
