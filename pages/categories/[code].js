@@ -145,6 +145,15 @@ const Post = () => {
     setLoading(false);
   }
 
+  function downloadFromIPFS(doc) {
+    console.log(doc);
+    // eslint-disable-next-line import/no-unresolved
+    const docs = require('data/recent.json');
+    const cid = docs[`${doc.id}.pdf`];
+    console.log(cid);
+    router.push(`https://ipfs.io/ipfs/${cid}/${doc.id}.pdf`);
+  }
+
   useEffect(() => {
     if (router1.isReady && !first) {
       console.log('and this?', code);
@@ -249,9 +258,11 @@ const Post = () => {
                     </p>
                     <div className="mt-2 max-w-xl text-sm text-gray-500" />
                     <div className="mt-5 inline-block">
+
                       <button
                         type="button"
                         className="inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-blue-700 bg-blue-100 hover:blue-red-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:text-sm"
+                        onClick={() => { downloadFromIPFS(article); }}
                       >
                         Download from
                         &nbsp;
@@ -261,7 +272,7 @@ const Post = () => {
                           alt="IPFS logo"
                         />
                         &nbsp;
-                        (coming soon)
+
                       </button>
 
                     </div>

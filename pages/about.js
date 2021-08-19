@@ -18,9 +18,9 @@ const features = [
   {
     name: 'Open Source',
     description:
-      'The full repository is open-source, you are free to do PRs or star ⭐ to increase the visibility',
+      'The full repository is open-source, ⭐ or PR us on',
     icon: CodeIcon,
-    href: 'github.com/hugoroussel/xirva',
+    href: 'https://github.com/hugoroussel/xirva',
   },
 
 ];
@@ -53,16 +53,8 @@ export default function CS() {
                   <dd className="mt-2 text-base text-gray-500">
                     {feature.description}
                     {' '}
-                    <a
-                      className="text-indigo-500 hover:underline"
-                      href={feature.href}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      here
-                    </a>
-                    .
-                    {' '}
+                    <a href={feature.href} className="hover:underline text-indigo-500">Github</a>
+    
                   </dd>
 
                 </div>
