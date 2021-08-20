@@ -151,7 +151,11 @@ const Post = () => {
     const docs = require('data/recent.json');
     const cid = docs[`${doc.id}.pdf`];
     console.log(cid);
-    router.push(`https://ipfs.io/ipfs/${cid}/${doc.id}.pdf`);
+    window.open(`https://ipfs.io/ipfs/${cid}/${doc.id}.pdf`, '_ blank');
+  }
+
+  function openFromArxiv(article) {
+    window.open(`https://arxiv.org/pdf/${article.id}.pdf`, '_ blank');
   }
 
   useEffect(() => {
@@ -278,22 +282,21 @@ const Post = () => {
                     </div>
                       &nbsp;
                     <div className="mt-5 inline-block pr-14">
-                      <a
-                        href={`https://arxiv.org/pdf/${article.id}.pdf`}
+
+                      <button
+                        type="button"
+                        className="inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-red-700 bg-red-100 hover:blue-red-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:text-sm"
+                        onClick={() => { openFromArxiv(article); }}
                       >
-                        <button
-                          type="button"
-                          className="inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-red-700 bg-red-100 hover:blue-red-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:text-sm"
-                        >
-                          Download from
-                          &nbsp;
-                          <img
-                            src="https://oasismath.org/resources-directory/img/arxiv.png"
-                            className="h-5 w-5"
-                            alt="IPFS logo"
-                          />
-                        </button>
-                      </a>
+                        Download from
+                        &nbsp;
+                        <img
+                          src="https://oasismath.org/resources-directory/img/arxiv.png"
+                          className="h-5 w-5"
+                          alt="IPFS logo"
+                        />
+                      </button>
+
                     </div>
 
                     <div className="mt-5 inline-block pl-20">
