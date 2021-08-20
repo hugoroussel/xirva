@@ -338,17 +338,18 @@ export default function Upload() {
             <div className="inline-block align-middle">
               {' '}
               <img
-                className="h-10 w-24"
+                className="h-8 w-18"
                 src="https://upload.wikimedia.org/wikipedia/commons/c/c2/IPFS_logo.png"
                 alt="ipfs logo"
               />
             </div>
+            {' '}
             +
-            <div className="inline-block align-middle">
+            <div className="inline-block align-middle pt-1">
               {' '}
               <img
-                className="h-8 w-100"
-                src="https://polygon.technology/media-kit/polygon-logo.svg"
+                className="h-20 w-100"
+                src="https://logowik.com/content/uploads/images/polygon-matic5119.jpg"
                 alt="polygon logo"
               />
             </div>
